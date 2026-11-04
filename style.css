@@ -60,3 +60,22 @@
 
 /* Car dealership gallery: keep full desktop screenshots legible in the card. */
 .car-dealer-gallery{background:radial-gradient(ellipse at 50% 45%,#173b5e,#0c2137 70%,#0b1220)}.car-dealer-gallery .car-dealer-cover{width:100%;height:100%;object-fit:contain;object-position:center;background:#0b2035}.car-dealer-gallery .gallery-dots{max-width:calc(100% - 24px);overflow-x:auto}.car-dealer-gallery .gallery-dot{flex:0 0 8px}.car-dealer-gallery .visual-tag{z-index:6;padding:5px 7px;border-radius:4px;background:#111b2dcc;color:#fff;font-size:8px;letter-spacing:1px}.car-dealer-lightbox{z-index:21}.car-dealer-lightbox .gallery-dots{bottom:24px}
+
+/* Compact, accessible navigation for phone screens. */
+.menu-toggle{display:none}
+@media(max-width:760px){
+  .topbar{height:64px;padding-inline:12px;gap:10px}
+  .topbar nav{display:none!important}
+  .topbar.nav-open nav{display:flex!important;position:absolute;top:calc(100% + 8px);inset-inline:0;flex-direction:column;align-items:stretch;gap:0;padding:8px;border:1px solid var(--line);border-radius:12px;background:rgba(11,18,32,.98);box-shadow:0 18px 40px #0008}
+  .topbar.nav-open nav a{display:block;padding:13px 12px;border-radius:8px;font-size:13px}
+  .topbar.nav-open nav a:hover{background:#ffffff0b}
+  .brand{flex:0 0 auto}
+  .top-actions{margin-inline-start:auto;gap:0}
+  .lang{padding:7px 10px;white-space:nowrap}
+  .menu-toggle{display:grid;flex:0 0 38px;place-content:center;gap:4px;width:38px;height:38px;padding:8px;border:1px solid var(--line);border-radius:10px;background:var(--panel);cursor:pointer}
+  .menu-toggle span{display:block;width:18px;height:2px;border-radius:2px;background:var(--text);transition:transform .2s,opacity .2s}
+  .topbar.nav-open .menu-toggle span:first-child{transform:translateY(6px) rotate(45deg)}
+  .topbar.nav-open .menu-toggle span:nth-child(2){opacity:0}
+  .topbar.nav-open .menu-toggle span:last-child{transform:translateY(-6px) rotate(-45deg)}
+}
+@media(max-width:380px){.topbar{width:calc(100% - 20px);padding-inline:8px;gap:7px}.brand{font-size:13px}.brand-mark{width:25px;height:25px}.lang{font-size:10px;padding:6px 8px}.menu-toggle{width:34px;height:34px;flex-basis:34px}}
