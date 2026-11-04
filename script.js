@@ -44,5 +44,19 @@ const fluentoLightbox=document.querySelector('#fluento-lightbox');
 fluentoLightbox.querySelector('.fluento-dots').innerHTML=fluentoDotsMarkup;
 initGallery({root:fluentoRoot,shots:fluentoShots,lightbox:fluentoLightbox,coverSelector:'.fluento-cover',openSelector:'.fluento-image-button',closeSelector:'.fluento-close',prevSelector:'.fluento-prev',nextSelector:'.fluento-next',dotSelector:'.gallery-dot',lightboxImageSelector:'.fluento-lightbox-image'});
 const quranRoot=document.querySelector('.quran-gallery');
-const quranShots=[{src:'assets/quran-home.png',alt:'Quran app home screen with Quran, search, tasbih and Qibla tools'},{src:'assets/quran-surahs.png',alt:'Quran app surah list and search screen'}];
+const quranShots=[
+ {src:'assets/quran-home.png',alt:'Quran app home screen with buttons for surahs, search, tasbih and Qibla'},
+ {src:'assets/quran-surahs.png',alt:'Quran app surah list with Arabic names, transliterations and verse counts'},
+ {src:'assets/quran-fatiha.png',alt:'Reading Surah Al-Fatiha with verse playback and tafsir controls'},
+ {src:'assets/quran-baqarah.png',alt:'Reading Surah Al-Baqarah with page navigation'},
+ {src:'assets/quran-tafsir.png',alt:'Quran verse tafsir panel with Arabic verse and explanation'},
+ {src:'assets/quran-search.png',alt:'Search Quran verses with optional surah and verse filters'},
+ {src:'assets/quran-tasbih.png',alt:'Digital tasbih counter screen'},
+ {src:'assets/quran-tasbih-dhikr.png',alt:'Choose a dhikr for the digital tasbih'},
+ {src:'assets/quran-tasbih-history.png',alt:'Tasbih counter with saved dhikr history'},
+ {src:'assets/quran-qibla.png',alt:'Qibla compass and direction information'}
+];
+const quranDots=quranShots.map((shot,i)=>`<button class="gallery-dot${i===0?' active':''}" type="button" aria-label="Screenshot ${i+1}: ${shot.alt}"></button>`).join('');
+document.querySelectorAll('.quran-dots').forEach(group=>group.innerHTML=quranDots);
 initGallery({root:quranRoot,shots:quranShots,lightbox:document.querySelector('#quran-lightbox'),coverSelector:'.quran-cover',openSelector:'.quran-image-button',closeSelector:'.quran-close',prevSelector:'.quran-prev',nextSelector:'.quran-next',dotSelector:'.gallery-dot',lightboxImageSelector:'.quran-lightbox-image'});
+
