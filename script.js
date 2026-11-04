@@ -72,3 +72,18 @@ const perfumeDots=perfumeShots.map((shot,i)=>`<button class="gallery-dot${i===0?
 document.querySelectorAll('.perfume-dots').forEach(group=>group.innerHTML=perfumeDots);
 initGallery({root:perfumeRoot,shots:perfumeShots,lightbox:document.querySelector('#perfume-lightbox'),coverSelector:'.perfume-cover',openSelector:'.perfume-image-button',closeSelector:'.perfume-close',prevSelector:'.perfume-prev',nextSelector:'.perfume-next',dotSelector:'.gallery-dot',lightboxImageSelector:'.perfume-lightbox-image'});
 
+
+const carDealerRoot=document.querySelector('.car-dealer-gallery');
+const carDealerShots=[
+ {src:'assets/car-dealer-cars.png',alt:'Car dealership system cars management screen'},
+ {src:'assets/car-dealer-customers.png',alt:'Customer records management screen'},
+ {src:'assets/car-dealer-employees.png',alt:'Employee records management screen'},
+ {src:'assets/car-dealer-orders.png',alt:'Car dealership orders management screen'},
+ {src:'assets/car-dealer-payments.png',alt:'Payment records management screen'},
+ {src:'assets/car-dealer-services.png',alt:'Vehicle service records management screen'},
+ {src:'assets/car-dealer-reports.png',alt:'Car dealership reports menu'},
+ {src:'assets/car-dealer-report-detail.png',alt:'Car dealership service report results'}
+];
+const carDealerDots=carDealerShots.map((shot,i)=>`<button class="gallery-dot${i===0?' active':''}" type="button" aria-label="Screenshot ${i+1}: ${shot.alt}"></button>`).join('');
+document.querySelectorAll('.car-dealer-dots').forEach(group=>group.innerHTML=carDealerDots);
+initGallery({root:carDealerRoot,shots:carDealerShots,lightbox:document.querySelector('#car-dealer-lightbox'),coverSelector:'.car-dealer-cover',openSelector:'.car-dealer-image-button',closeSelector:'.car-dealer-close',prevSelector:'.car-dealer-prev',nextSelector:'.car-dealer-next',dotSelector:'.gallery-dot',lightboxImageSelector:'.car-dealer-lightbox-image'});
