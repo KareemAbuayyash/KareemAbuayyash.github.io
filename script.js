@@ -60,3 +60,15 @@ const quranDots=quranShots.map((shot,i)=>`<button class="gallery-dot${i===0?' ac
 document.querySelectorAll('.quran-dots').forEach(group=>group.innerHTML=quranDots);
 initGallery({root:quranRoot,shots:quranShots,lightbox:document.querySelector('#quran-lightbox'),coverSelector:'.quran-cover',openSelector:'.quran-image-button',closeSelector:'.quran-close',prevSelector:'.quran-prev',nextSelector:'.quran-next',dotSelector:'.gallery-dot',lightboxImageSelector:'.quran-lightbox-image'});
 
+const perfumeRoot=document.querySelector('.perfume-gallery');
+const perfumeShots=[
+ {src:'assets/perfume-home.png',alt:'Kareem Perfume homepage with fragrance carousel'},
+ {src:'assets/perfume-products.png',alt:'Perfume product catalog with search and category filters'},
+ {src:'assets/perfume-about.png',alt:'About Kareem Perfume and its brand story'},
+ {src:'assets/perfume-contact.png',alt:'Kareem Perfume contact form'},
+ {src:'assets/perfume-cart.png',alt:'Shopping cart and order summary'}
+];
+const perfumeDots=perfumeShots.map((shot,i)=>`<button class="gallery-dot${i===0?' active':''}" type="button" aria-label="Screenshot ${i+1}: ${shot.alt}"></button>`).join('');
+document.querySelectorAll('.perfume-dots').forEach(group=>group.innerHTML=perfumeDots);
+initGallery({root:perfumeRoot,shots:perfumeShots,lightbox:document.querySelector('#perfume-lightbox'),coverSelector:'.perfume-cover',openSelector:'.perfume-image-button',closeSelector:'.perfume-close',prevSelector:'.perfume-prev',nextSelector:'.perfume-next',dotSelector:'.gallery-dot',lightboxImageSelector:'.perfume-lightbox-image'});
+
