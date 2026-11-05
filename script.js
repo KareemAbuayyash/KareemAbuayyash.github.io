@@ -124,10 +124,23 @@ certificateClose.addEventListener('click',closeCertificate);
 certificateModal.addEventListener('click',event=>{if(event.target===certificateModal)closeCertificate()});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!certificateModal.hidden)closeCertificate()});
 
-const sightDemoModal=document.querySelector('#sight-demo-lightbox');
-const sightDemoVideo=sightDemoModal.querySelector('video');
-const closeSightDemo=()=>{sightDemoVideo.pause();sightDemoVideo.currentTime=0;sightDemoModal.hidden=true;document.body.classList.remove('lightbox-open')};
-document.querySelector('.sight-demo-button').addEventListener('click',()=>{sightDemoModal.hidden=false;document.body.classList.add('lightbox-open');sightDemoVideo.play()});
-sightDemoModal.querySelector('.sight-demo-close').addEventListener('click',closeSightDemo);
-sightDemoModal.addEventListener('click',event=>{if(event.target===sightDemoModal)closeSightDemo()});
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!sightDemoModal.hidden)closeSightDemo()});
+const sightDemoPlayer=document.querySelector('#sight-demo-player');
+const sightDemoVideos=[
+ {src:'assets/sight-demo.mp4',poster:'assets/sight-demo-poster.jpg',label:'Sight demo video 1'},
+ {src:'assets/sight-demo-2.mp4',poster:'assets/sight-demo-poster-2.jpg',label:'Sight demo video 2'}
+];
+let sightDemoIndex=0;
+const setSightDemo=index=>{
+ sightDemoIndex=(index+sightDemoVideos.length)%sightDemoVideos.length;
+ const demo=sightDemoVideos[sightDemoIndex];
+ document.querySelector('.sight-video').classList.toggle('sight-video-portrait',sightDemoIndex===1);
+ sightDemoPlayer.pause();
+ sightDemoPlayer.src=demo.src;
+ sightDemoPlayer.poster=demo.poster;
+ sightDemoPlayer.setAttribute('aria-label',demo.label);
+ sightDemoPlayer.load();
+ document.querySelectorAll('.sight-demo-dots .gallery-dot').forEach((dot,i)=>dot.classList.toggle('active',i===sightDemoIndex));
+};
+document.querySelector('.sight-demo-prev').addEventListener('click',()=>setSightDemo(sightDemoIndex-1));
+document.querySelector('.sight-demo-next').addEventListener('click',()=>setSightDemo(sightDemoIndex+1));
+document.querySelectorAll('.sight-demo-dots .gallery-dot').forEach((dot,i)=>dot.addEventListener('click',()=>setSightDemo(i)));
