@@ -125,6 +125,21 @@ const webEcommerceDots=webEcommerceShots.map((shot,i)=>`<button class="gallery-d
 document.querySelectorAll('.web-ecommerce-dots').forEach(group=>group.innerHTML=webEcommerceDots);
 initGallery({root:webEcommerceRoot,shots:webEcommerceShots,lightbox:document.querySelector('#web-ecommerce-lightbox'),coverSelector:'.web-ecommerce-cover',openSelector:'.web-ecommerce-image-button',closeSelector:'.web-ecommerce-close',prevSelector:'.web-ecommerce-prev',nextSelector:'.web-ecommerce-next',dotSelector:'.gallery-dot',lightboxImageSelector:'.web-ecommerce-lightbox-image'});
 
+const companySystemRoot=document.querySelector('.company-system-gallery');
+const companySystemShots=[
+ {src:'assets/company-home-en.png',alt:'Company System home dashboard in English'},
+ {src:'assets/company-home-ar.png',alt:'Company System home dashboard in Arabic'},
+ {src:'assets/company-departments.png',alt:'Department management with search and sorting'},
+ {src:'assets/company-department-details.png',alt:'Company department details'},
+ {src:'assets/company-notes.png',alt:'Employee notes list with filters and pagination'},
+ {src:'assets/company-note-create.png',alt:'Create an employee note'},
+ {src:'assets/company-note-details.png',alt:'Employee note details'},
+ {src:'assets/company-content-management.png',alt:'Manage company home page content'}
+];
+const companySystemDots=companySystemShots.map((shot,i)=>`<button class="gallery-dot${i===0?' active':''}" type="button" aria-label="Screenshot ${i+1}: ${shot.alt}"></button>`).join('');
+document.querySelectorAll('.company-system-dots').forEach(group=>group.innerHTML=companySystemDots);
+initGallery({root:companySystemRoot,shots:companySystemShots,lightbox:document.querySelector('#company-system-lightbox'),coverSelector:'.company-system-cover',openSelector:'.company-system-image-button',closeSelector:'.company-system-close',prevSelector:'.company-system-prev',nextSelector:'.company-system-next',dotSelector:'.gallery-dot',lightboxImageSelector:'.company-system-lightbox-image'});
+
 const certificateModal=document.querySelector('#certificate-lightbox');
 const certificateImage=certificateModal.querySelector('.certificate-image');
 const certificateClose=certificateModal.querySelector('.certificate-close');
