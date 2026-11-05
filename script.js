@@ -12,7 +12,21 @@ const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entr
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 const barberShots=[
  {src:'assets/barber-house-full.png',alt:'Full BARBER HOUSE homepage screenshot'},
- {src:'assets/barber-house-dashboard-bookings.png',alt:'BARBER HOUSE owner dashboard with bookings, sales and the management sidebar'}
+ {src:'assets/barber-house-dashboard-bookings.png',alt:'BARBER HOUSE owner dashboard and booking management'},
+ {src:'assets/barber-house-customers.png',alt:'BARBER HOUSE customer directory'},
+ {src:'assets/barber-house-services.png',alt:'BARBER HOUSE service management'},
+ {src:'assets/barber-house-accounts.png',alt:'BARBER HOUSE accounts and customer balances'},
+ {src:'assets/barber-house-reports.png',alt:'BARBER HOUSE sales and performance reports'},
+ {src:'assets/barber-house-inventory.png',alt:'BARBER HOUSE inventory management'},
+ {src:'assets/barber-house-notifications.png',alt:'BARBER HOUSE notifications'},
+ {src:'assets/barber-house-settings.png',alt:'BARBER HOUSE shop settings'},
+ {src:'assets/barber-house-mobile-home.png',alt:'BARBER HOUSE mobile homepage'},
+ {src:'assets/barber-house-mobile-booking-methods.png',alt:'BARBER HOUSE mobile booking methods'},
+ {src:'assets/barber-house-mobile-booking-form.jpg',alt:'BARBER HOUSE mobile booking form'},
+ {src:'assets/barber-house-mobile-service-options.jpg',alt:'BARBER HOUSE mobile service options'},
+ {src:'assets/barber-house-mobile-order-success.jpg',alt:'BARBER HOUSE mobile booking confirmation'},
+ {src:'assets/barber-house-mobile-bookings.jpg',alt:'BARBER HOUSE mobile customer bookings'},
+ {src:'assets/barber-house-mobile-notifications.jpg',alt:'BARBER HOUSE mobile notifications'}
 ];
 const fluentoShots=[
  {src:'assets/fluento-admin-dashboard.png',alt:'Fluento admin dashboard'},
@@ -30,8 +44,9 @@ const fluentoShots=[
 function initGallery({root,shots,lightbox,coverSelector,openSelector,closeSelector,prevSelector,nextSelector,dotSelector,lightboxImageSelector}){
  let index=0;
  const cover=root.querySelector(coverSelector), zoom=lightbox.querySelector(lightboxImageSelector);
- const dots=[...root.querySelectorAll(dotSelector),...lightbox.querySelectorAll(dotSelector)];
- const setIndex=n=>{index=(n+shots.length)%shots.length;const shot=shots[index];[cover,zoom].forEach(img=>{img.src=shot.src;img.alt=shot.alt});dots.forEach((dot,i)=>dot.classList.toggle('active',i===index))};
+ const dotGroups=[root.querySelectorAll(dotSelector),lightbox.querySelectorAll(dotSelector)];
+ const setIndex=n=>{index=(n+shots.length)%shots.length;const shot=shots[index];[cover,zoom].forEach(img=>{img.src=shot.src;img.alt=shot.alt});dotGroups.forEach(dots=>dots.forEach((dot,i)=>dot.classList.toggle('active',i===index)))};
+ const dots=[...dotGroups].flatMap(group=>[...group]);
  root.querySelector(openSelector).addEventListener('click',()=>{lightbox.hidden=false;document.body.classList.add('lightbox-open');lightbox.querySelector(closeSelector).focus()});
  const close=()=>{lightbox.hidden=true;document.body.classList.remove('lightbox-open')};
  lightbox.querySelector(closeSelector).addEventListener('click',close);
@@ -42,6 +57,9 @@ function initGallery({root,shots,lightbox,coverSelector,openSelector,closeSelect
  document.addEventListener('keydown',e=>{if(!lightbox.hidden){if(e.key==='Escape')close();if(e.key==='ArrowLeft')setIndex(index+1);if(e.key==='ArrowRight')setIndex(index-1)}});
 }
 const barberRoot=document.querySelector('.barber');
+const barberDotMarkup=barberShots.map((shot,i)=>`<button class="gallery-dot${i===0?' active':''}" type="button" aria-label="Screenshot ${i+1}: ${shot.alt}"></button>`).join('');
+barberRoot.querySelector('.gallery-dots').innerHTML=barberDotMarkup;
+document.querySelector('#project-lightbox .gallery-dots').innerHTML=barberDotMarkup;
 initGallery({root:barberRoot,shots:barberShots,lightbox:document.querySelector('#project-lightbox'),coverSelector:'.project-cover',openSelector:'.project-image-button',closeSelector:'.lightbox-close',prevSelector:'.gallery-prev',nextSelector:'.gallery-next',dotSelector:'.gallery-dot',lightboxImageSelector:'.lightbox-image'});
 const fluentoRoot=document.querySelector('.fluento-gallery');
 const fluentoDotsMarkup=fluentoShots.map((shot,i)=>`<button class="gallery-dot${i===0?' active':''}" type="button" aria-label="Screenshot ${i+1}: ${shot.alt}"></button>`).join('');
