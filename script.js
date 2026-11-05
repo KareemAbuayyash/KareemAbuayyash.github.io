@@ -106,3 +106,20 @@ const webEcommerceShots=[
 const webEcommerceDots=webEcommerceShots.map((shot,i)=>`<button class="gallery-dot${i===0?' active':''}" type="button" aria-label="Screenshot ${i+1}: ${shot.alt}"></button>`).join('');
 document.querySelectorAll('.web-ecommerce-dots').forEach(group=>group.innerHTML=webEcommerceDots);
 initGallery({root:webEcommerceRoot,shots:webEcommerceShots,lightbox:document.querySelector('#web-ecommerce-lightbox'),coverSelector:'.web-ecommerce-cover',openSelector:'.web-ecommerce-image-button',closeSelector:'.web-ecommerce-close',prevSelector:'.web-ecommerce-prev',nextSelector:'.web-ecommerce-next',dotSelector:'.gallery-dot',lightboxImageSelector:'.web-ecommerce-lightbox-image'});
+
+const certificateModal=document.querySelector('#certificate-lightbox');
+const certificateImage=certificateModal.querySelector('.certificate-image');
+const certificateClose=certificateModal.querySelector('.certificate-close');
+document.querySelectorAll('.degree-link').forEach(link=>link.addEventListener('click',()=>{
+ const isAsal=link.classList.contains('certificate-link');
+ certificateImage.src=isAsal?'assets/asal-backend-training-certificate.jpeg':'assets/bethlehem-university-degree.jpg';
+ certificateImage.alt=isAsal?'ASAL Technologies training certificate for Kareem Abu Ayyash':'Bethlehem University degree certificate for Kareem Abu Ayyash';
+ certificateModal.setAttribute('aria-label',isAsal?'ASAL Technologies training certificate':'Bethlehem University degree certificate');
+ certificateModal.hidden=false;
+ document.body.classList.add('lightbox-open');
+ certificateClose.focus();
+}));
+const closeCertificate=()=>{certificateModal.hidden=true;document.body.classList.remove('lightbox-open')};
+certificateClose.addEventListener('click',closeCertificate);
+certificateModal.addEventListener('click',event=>{if(event.target===certificateModal)closeCertificate()});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!certificateModal.hidden)closeCertificate()});
