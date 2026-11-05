@@ -93,3 +93,16 @@ const carDealerShots=[
 const carDealerDots=carDealerShots.map((shot,i)=>`<button class="gallery-dot${i===0?' active':''}" type="button" aria-label="Screenshot ${i+1}: ${shot.alt}"></button>`).join('');
 document.querySelectorAll('.car-dealer-dots').forEach(group=>group.innerHTML=carDealerDots);
 initGallery({root:carDealerRoot,shots:carDealerShots,lightbox:document.querySelector('#car-dealer-lightbox'),coverSelector:'.car-dealer-cover',openSelector:'.car-dealer-image-button',closeSelector:'.car-dealer-close',prevSelector:'.car-dealer-prev',nextSelector:'.car-dealer-next',dotSelector:'.gallery-dot',lightboxImageSelector:'.car-dealer-lightbox-image'});
+
+const webEcommerceRoot=document.querySelector('.web-ecommerce-gallery');
+const webEcommerceShots=[
+ {src:'assets/web-ecommerce-home.png',alt:'Kareem Online Store homepage with animated night landscape'},
+ {src:'assets/web-ecommerce-products.png',alt:'Online store product catalog with category navigation'},
+ {src:'assets/web-ecommerce-checkout.png',alt:'Product confirmation before adding an item to the cart'},
+ {src:'assets/web-ecommerce-cart.png',alt:'Shopping cart with quantities and total'},
+ {src:'assets/web-ecommerce-admin.png',alt:'Administrator product catalog management'},
+ {src:'assets/web-ecommerce-admin-ar.png',alt:'Administrator product upload form in Arabic'}
+];
+const webEcommerceDots=webEcommerceShots.map((shot,i)=>`<button class="gallery-dot${i===0?' active':''}" type="button" aria-label="Screenshot ${i+1}: ${shot.alt}"></button>`).join('');
+document.querySelectorAll('.web-ecommerce-dots').forEach(group=>group.innerHTML=webEcommerceDots);
+initGallery({root:webEcommerceRoot,shots:webEcommerceShots,lightbox:document.querySelector('#web-ecommerce-lightbox'),coverSelector:'.web-ecommerce-cover',openSelector:'.web-ecommerce-image-button',closeSelector:'.web-ecommerce-close',prevSelector:'.web-ecommerce-prev',nextSelector:'.web-ecommerce-next',dotSelector:'.gallery-dot',lightboxImageSelector:'.web-ecommerce-lightbox-image'});
