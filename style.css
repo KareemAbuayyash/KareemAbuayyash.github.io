@@ -88,3 +88,5 @@
 .degree-link{width:auto;height:auto;padding:0;border:0;border-radius:0;background:transparent}.degree-link svg{display:block;width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.degree-link:hover{background:transparent;color:#91a2bd;transform:translateY(-1px)}
 
 #asal-certificate-lightbox{z-index:61}
+
+.sight-demo-button{padding:0;border:0;background:transparent;color:var(--cyan);font:inherit;font-size:10px;cursor:pointer}.sight-demo-button:hover{text-decoration:underline}.sight-demo-lightbox{z-index:61}.sight-demo-video{width:min(92vw,1100px);max-height:84vh;border:1px solid var(--line);border-radius:10px;background:#000;box-shadow:0 25px 90px #000b}

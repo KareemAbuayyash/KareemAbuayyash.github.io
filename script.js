@@ -123,3 +123,11 @@ const closeCertificate=()=>{certificateModal.hidden=true;document.body.classList
 certificateClose.addEventListener('click',closeCertificate);
 certificateModal.addEventListener('click',event=>{if(event.target===certificateModal)closeCertificate()});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!certificateModal.hidden)closeCertificate()});
+
+const sightDemoModal=document.querySelector('#sight-demo-lightbox');
+const sightDemoVideo=sightDemoModal.querySelector('video');
+const closeSightDemo=()=>{sightDemoVideo.pause();sightDemoVideo.currentTime=0;sightDemoModal.hidden=true;document.body.classList.remove('lightbox-open')};
+document.querySelector('.sight-demo-button').addEventListener('click',()=>{sightDemoModal.hidden=false;document.body.classList.add('lightbox-open');sightDemoVideo.play()});
+sightDemoModal.querySelector('.sight-demo-close').addEventListener('click',closeSightDemo);
+sightDemoModal.addEventListener('click',event=>{if(event.target===sightDemoModal)closeSightDemo()});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!sightDemoModal.hidden)closeSightDemo()});
