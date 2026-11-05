@@ -1,9 +1,14 @@
 const langButton=document.querySelector('#lang');
+const menuToggle=document.querySelector('#menu-toggle');
+const primaryNav=document.querySelector('#primary-nav');
+const topActions=document.querySelector('.top-actions');
+const mobileNavQuery=window.matchMedia('(max-width:760px)');
+function placeLanguageToggle(){if(mobileNavQuery.matches){primaryNav.append(langButton)}else{topActions.prepend(langButton)}}
+placeLanguageToggle();
+mobileNavQuery.addEventListener('change',placeLanguageToggle);
 function setLanguage(lang){const arabic=lang==='ar';document.documentElement.lang=lang;document.documentElement.dir=arabic?'rtl':'ltr';document.querySelectorAll('[data-en][data-ar]').forEach(el=>{el.innerHTML=el.dataset[arabic?'ar':'en']});langButton.textContent=arabic?'English':'عربي';localStorage.setItem('portfolio-language',lang)}
 langButton.addEventListener('click',()=>setLanguage(localStorage.getItem('portfolio-language')==='ar'?'en':'ar'));
 setLanguage(localStorage.getItem('portfolio-language')||'en');
-const menuToggle=document.querySelector('#menu-toggle');
-const primaryNav=document.querySelector('#primary-nav');
 const closeMobileNav=()=>{document.querySelector('.topbar').classList.remove('nav-open');menuToggle.setAttribute('aria-expanded','false')};
 menuToggle.addEventListener('click',()=>{const isOpen=document.querySelector('.topbar').classList.toggle('nav-open');menuToggle.setAttribute('aria-expanded',String(isOpen))});
 primaryNav.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMobileNav));
