@@ -145,9 +145,9 @@ const certificateImage=certificateModal.querySelector('.certificate-image');
 const certificateClose=certificateModal.querySelector('.certificate-close');
 document.querySelectorAll('.degree-link').forEach(link=>link.addEventListener('click',()=>{
  const isAsal=link.classList.contains('certificate-link');
- certificateImage.src=isAsal?'assets/asal-backend-training-certificate.jpeg':'assets/bethlehem-university-degree.jpg';
- certificateImage.alt=isAsal?'ASAL Technologies training certificate for Kareem Abu Ayyash':'Bethlehem University degree certificate for Kareem Abu Ayyash';
- certificateModal.setAttribute('aria-label',isAsal?'ASAL Technologies training certificate':'Bethlehem University degree certificate');
+ certificateImage.src=link.dataset.certificate||(isAsal?'assets/asal-backend-training-certificate.jpeg':'assets/bethlehem-university-degree.jpg');
+ certificateImage.alt=link.dataset.certificateAlt||(isAsal?'ASAL Technologies training certificate for Kareem Abu Ayyash':'Bethlehem University degree certificate for Kareem Abu Ayyash');
+ certificateModal.setAttribute('aria-label',link.title||(isAsal?'ASAL Technologies training certificate':'Bethlehem University degree certificate'));
  certificateModal.hidden=false;
  document.body.classList.add('lightbox-open');
  certificateClose.focus();

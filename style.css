@@ -111,3 +111,6 @@
 #projects.section{padding-bottom:40px}
 .skills.section{padding-top:40px}
 @media(max-width:760px){#projects.section{padding-bottom:28px}.skills.section{padding-top:24px}}
+
+/* Courses & certifications */
+.courses.section{padding-top:40px;padding-bottom:40px}.courses h2{margin:18px 0 28px}.course-list{border-top:1px solid var(--line)}.course-item{display:grid;grid-template-columns:155px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line)}.course-item time{font-size:10px;letter-spacing:.4px;color:#8290a6;padding-top:3px}.course-item h3{font-size:14px;margin:0}.course-item p{font-size:11px;color:#a6b2c5;margin:7px 0 0}.course-item p span{color:#8290a6}.course-hours{font-size:11px;color:#92a0b4;font-weight:500}@media(max-width:760px){.courses.section{padding-top:24px;padding-bottom:28px}.courses h2{margin:14px 0 22px}.course-item{grid-template-columns:1fr;gap:7px;padding:18px 0}}
